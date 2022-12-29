@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Sysarc</h1>
+    <!------------DataBinding------------->
+    <h1>{{ name }}</h1>
+
+    <label>Enter the Brand Name</label>
+    <!------------2wayBinding------------->
+    <input type="text" [(ngModel)]="brand" />
+
+    <div>{{ brand }}</div>
+
+    <h1>Welcome!</h1>
+    <input
+      type="text"
+      [(ngModel)]="name"
+      placeholder="Enter Your User Name"
+    /><br />
+    User Name: {{ name }} <br />
+    <button [disabled]="key1" (click)="buto()">Click</button> to Update User
+    Name<br />
+    {{ newname }}
+    <img class="img1" [attr.src]="image1" alt="" />
+    <button class="bt2" [disabled]="key2" (click)="img1()">Image</button>
+
+    <table class="tab1" [attr.height]="h" [attr.width]="w" [border]="b">
+      <tr>
+        <th>Name</th>
+        <th>Dept</th>
+      </tr>
+      <tr>
+        <td>Ciril</td>
+        <td>US</td>
+      </tr>
+      <tr>
+        <td>Asha</td>
+        <td>US</td>
+      </tr>
+      <tr>
+        <td>Shadow</td>
+        <td>US</td>
+      </tr>
+    </table>
+
+    <h1 class="head1" [ngStyle]="multistyle()">Angular 14</h1>
+
+    <div class="div1" [ngStyle]="bcol()">
+      <p (click)="bool()">Click Here To Change The Background Color</p>
+    </div>
+
+    <br />
+
+    <!-- //ngIf -->
+    <div>
+      <input type="button" value="{{ caption }}" (click)="changedata()" />
+      <br />
+      <h2 *ngIf="changeInfo">Lorem ipsum dolor sit amet</h2>
+    </div>
+
+    <table border="2" style="border-collapse: collapse">
+      <tr *ngFor="let item of courseList">
+        <td>{{ item.courseid }}</td>
+        <td>{{ item.coursename }}</td>
+        <td>{{ item.author }}</td>
+        <td>{{ item.dob }}</td>
+        <td>{{ item.dob | customPipe1 }}</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr *ngFor="let str of courseList">
+        <td>{{ str.courseid }}</td>
+        <td>{{ str.coursename | titlecase }}</td>
+        <td>{{ str.author | titlecase }}</td>
+        <td>{{ str.dob }}</td>
+      </tr>
+    </table>
+    <br />
+    <hr />
+    <br />
+    <table border="2" style="border-color: red">
+      <tr *ngFor="let det of obj">
+        <td>{{ det.name1 | toUp }}</td>
+        <td>{{ det.date | date : "dd-mm-yyyy" }}</td>
+        <td>{{ det.cur1 | currency : "INR" : true }}</td>
+      </tr>
+    </table>
+    <hr />
+    <br />
+    <hr />
+    <br />
+
+    <h1>For Loop</h1>
+    <ol>
+      <li *ngFor="let Movies of Movie">
+        {{ Movies.name }}
+      </li>
+    </ol>
+
+    <h1>Nested For Loop</h1>
+    <ol *ngFor="let region of cinema">
+      <li >{{region.type}}</li>
+      <ul>
+        <li *ngFor="let Movies of region.movie">{{ Movies.name }}</li>
+      </ul>
+    </ol>
+    <br />
+    <hr />
+    <br />
+    <h1>Switch Case-1</h1>
+    <input type="number" [(ngModel)]="find" placeholder="Select the Number" />
+    <div [ngSwitch]="find">
+      <p *ngSwitchCase="1">Choosen One</p>
+      <p *ngSwitchCase="2">Choosen Two</p>
+      <p *ngSwitchCase="3">Choosen Three</p>
+      <p *ngSwitchCase="4">Choosen Four</p>
+      <p *ngSwitchCase="5">Choosen Five</p>
+    </div>
+    <br />
+    <br /> 
+    <hr />
+    <br />
+    <div>
+      <H1>TEMPLATE</H1>
+      <button *ngIf="toggle==='Yes';else notify">Buy Now</button>
+      <ng-template #notify>
+        <button>NotifyMe</button>
+      </ng-template>
+    </div>   
+    <br> <hr> <br>
+     <div>
+      <h1>Observable</h1>
+     </div>
+     <br> <hr> <br>
+
+     <!-- <button (click)="Observable()  ">Click</button>
+     <br><hr><br>
+     <br>
+     <div class="container">
+      <h1 class="heading"><strong>Services </strong>Demo</h1>
+      <button type="button" (click)="getProducts()">Get Products</button>
+      <div class='table-responsive'>
+      <table class='table'>
+      <thead>
+      <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products;">
+      <td>{{product.productID}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+     </div> -->
+      
+    <hr />
+    <br />
+     <h1>Login</h1>
+     <input type="text" name="UserName" [(ngModel)]="userid" required placeholder="UserName"><br> <br>
+     <input type="text" name="Password" [(ngModel)]="password" required placeholder="Password"><br> <br>
+     <button (click)="login()">Login</button>
+     <h2>Login Status:{{res}}</h2>
+     <br /> <br /> <br />
+    <hr />
+    <br />
+    
+
+</body>
+</html>
